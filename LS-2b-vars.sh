@@ -1,7 +1,11 @@
 # Script para crear un archivo de configuracion con variables para que las usen otros scripts
 
+# Nombres y rutas de archivos
+CFG=./install/config/LS-variables.cfg
+CFGTMP=./tmp/LS-variables.cfg.tmp
+
 # Comprobar si existe el archivo que contiene las variables y si existe si se quiere desechar
-if [ -f ./configs/server-variables.cfg ]
+if [ -f $CFG ]
 	then
 		echo "Ya existe un fichero de configuracion valido"
 		echo " "
@@ -16,21 +20,21 @@ if [ -f ./configs/server-variables.cfg ]
 					exit 1
 					;;
 				"No")
-					rm ./configs/server-variables.cfg
-					rm ./configs/server-variables.cfg.tmp 2> /dev/null
+					rm $CFG
+					rm $CFGTMP 2> /dev/null
 					break
 					;;
 				*) echo "Opción no válida";;
 			esac
 		done
 	else
-		rm ./configs/server-variables.cfg.tmp 2> /dev/null
+		rm $CFGTMP 2> /dev/null
 fi
 
 echo " - Arrancando script para definir variables -"
 
 # Se crea un archivo temporal que contendrá las variables
-touch ./configs/server-variables.cfg.tmp
+touch $CFGTMP
 
 # Nombre de red // Samba
 echo "El nombre de red actual es:"
@@ -45,7 +49,7 @@ do
 		"Si")
 			echo "Introduce nombre de red"
 			read NOMBRERED
-			echo "NOMBRERED=$NOMBRERED" >> .configs/server-variables.cfg.tmp
+			echo "NOMBRERED=$NOMBRERED" >> .configs/LS-variables.cfg.tmp
 			break
 			;;
 		"No")
@@ -138,5 +142,8 @@ do
 	esac
 done
 
+FECHAVARIABLES=
+echo $FECHAVARIABLES >> $CFGTMP
+
 # Hace archivo definitivo
-mv ./configs/server-variables.cfg.tmp ./configs/server-variables.cfg
+mv $CFGTMP $CFG

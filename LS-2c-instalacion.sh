@@ -3,8 +3,11 @@ echo " --------------------------------------"
 echo "     Procediendo con la instalacion"
 echo " --------------------------------------"
 
+# Variables
+CFG=./install/config/LS-variables.cfg
+
 # Instalar los programas necesarios // segun server-variables.cfg
-./configs/server-variables.cfg
+$CFG
 sudo apt-get install -y 
 
 # Copiar los archivos de configuracion por defecto si fuese necesario

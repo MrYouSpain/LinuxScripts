@@ -1,0 +1,4 @@
+- Cambiar las rutas de config
+- Cambiar las rutas de los archivos temporales (variables)
+- Crear procedimiento de registro en servidor remoto (MAC o lo que sea)
+- Crear script para cliente OpenVPN

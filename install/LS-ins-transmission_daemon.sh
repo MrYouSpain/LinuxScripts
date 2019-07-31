@@ -1,0 +1,1 @@
+# Script para instalar el cliente de Transmission Daemon (Torrent)

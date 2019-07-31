@@ -1,0 +1,1 @@
+# Script para instalar un servidor Wake on Lan

@@ -28,7 +28,7 @@ select opt in "${options[@]}"
 do
 	case $opt in
 		"Si")
-			sh server-arrancar.sh
+			sh LS-1-start.sh
 			break
 			;;
 		"No")
@@ -37,3 +37,11 @@ do
 		*) echo "Opción no válida";;
 	esac
 done
+
+if [ -f ./old/LS-0-previo.sh ]
+	then
+		echo "Ya existe un fichero de configuracion valido"
+		rm ./LS-0-previo.sh
+	else
+		
+fi
